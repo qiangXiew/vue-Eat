@@ -5,4 +5,4 @@
 npm install -g vue-cli
 
 # init 
-vue init vue-cli-eat/vue-cli-eat yourProjectName
+vue init qiangXiew/vue-Eat yourProjectName
