@@ -68,16 +68,23 @@ npm run build
 
 # 为生产环境查看和包分析器报告
 npm run build --report
+
+
+# 在./build/webpack.base.conf.js路径下，“url-loader“配置， 正确设置图片CDN路径
 ```
 
 # 开发
-
-### css编译
-- less
-### 使用ui
-- mintUi
-
+- 适配模式：暂用Rem布局，1rem = 设计图(width 750)对应 1px,在写大宽度/浮动时，尽量使用vw/vh。
+- css编译：less
+- 使用ui： mintUi
+- 增加vue-loader组件，默认使用非history模式，若使用history，需再nginx配置地址指向：
+```
+location / {
+try_files $uri $uri/ /index.html;
+}
+```
 #部署
+- 在开发过程中是组件化开发方式，打包后会根据功能膜块生成对应的文件目录
 
-在开发过程中是组件化开发方式，打包后会根据功能膜块生成对应的文件目录
-![图像](doc/dist.png)
+- ![图像](doc/dist.png)
+- assets-cdn 是静态资源目录，在config目录下cdnUrl配置了CDN（Content Delivery Network内容分发网络），将静态资源放置在CDN上有效提升了网站资源访问速度，减少服务器压力。

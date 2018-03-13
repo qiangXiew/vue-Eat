@@ -22,15 +22,10 @@ const devWebpackConfig = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
-      inject: true
-    }),
     new FriendlyErrorsPlugin()
   ]
 }
-// add hot-reload related code to entry chunks
+
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
   baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
 })
@@ -38,7 +33,7 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 Object.keys(Entry).forEach(chunkName =>{
   devWebpackConfig.plugins.push(
     new HtmlWebpackPlugin({
-      filename: `${chunkName}.html`,
+      filename: `${chunkName}index.html`,
       template: 'index.html',
       inject:true,
       chunks:[chunkName]

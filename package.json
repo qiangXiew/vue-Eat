@@ -2,7 +2,7 @@
   "name": "webhong5",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "谢强 <xieqiang@hong5.com.cn>",
+  "author": "qiangXie <361286383@qq.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -10,7 +10,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "vue": "^2.5.2"
+    "vue": "^2.5.2",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

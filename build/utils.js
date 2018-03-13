@@ -9,6 +9,10 @@ exports.assetsPath = function (_path) {
     : config.dev.assetsSubDirectory
   return path.posix.join(assetsSubDirectory, _path)
 }
+exports.imgPath = function (_path) {
+  const assetsSubDirectory = config.build.imgSubDirectory
+  return path.posix.join(assetsSubDirectory, _path)
+}
 
 exports.cssLoaders = function (options) {
   options = options || {}

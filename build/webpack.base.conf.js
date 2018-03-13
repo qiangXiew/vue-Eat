@@ -41,15 +41,27 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
-        options: {
+        options: process.env.NODE_ENV === 'production'
+        ? {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          name: utils.imgPath('img/[name].[hash:7].[ext]'),
+          publicPath: config.build.cdnUrl
+        }
+        : {
+          limit: 10000,
+          name: utils.assetsPath('img/[name].[hash:7].[ext]'),
         }
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         loader: 'url-loader',
-        options: {
+        options: process.env.NODE_ENV === 'production'
+        ? {
+          limit: 10000,
+          name: utils.imgPath('media/[name].[hash:7].[ext]'),
+          publicPath: config.build.cdnUrl
+        }
+        : {
           limit: 10000,
           name: utils.assetsPath('media/[name].[hash:7].[ext]')
         }
@@ -57,7 +69,13 @@ module.exports = {
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
-        options: {
+        options: process.env.NODE_ENV === 'production'
+        ? {
+          limit: 10000,
+          name: utils.imgPath('fonts/[name].[hash:7].[ext]'),
+          publicPath: config.build.cdnUrl
+        }
+        : {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
